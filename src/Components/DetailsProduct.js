@@ -1,9 +1,9 @@
 import React from "react";
-import { IconMinus,IconPlus } from "./Icons";
+import { IconCart, IconMinus, IconPlus } from "./Icons";
 
 export default function DetailsProduct() {
   return (
-    <div className="px-5 flex flex-col gap-2">
+    <div className="px-5 flex flex-col gap-2 pb-5">
       <span className="uppercase font-bold text-orange tracking-widest mt-8">
         sneaker company
       </span>
@@ -26,12 +26,20 @@ export default function DetailsProduct() {
         </div>
         <span className="text-grayishBlue font-bold line-through">$250.00</span>
       </div>
-      <div>
-        <div>0
-            <button className="">
-                <IconMinus />
-            </button>
+      <div className="flex flex-col gap-4 mt-4">
+        <div className="relative bg-lightGrayishBlue flex justify-center items-center font-bold p-4 rounded-lg  ">
+          0
+          <button className="absolute left-0 ml-5 rounded-full">
+            <IconMinus />
+          </button>
+          <button className="absolute right-0 mr-5 rounded-full">
+            <IconPlus />
+          </button>
         </div>
+        <button className="p-4 flex items-center justify-center gap-4 bg-orange w-full rounded-lg text-white font-bold shadow">
+            <IconCart fill="fill-white"/>
+            Add to cart
+        </button>
       </div>
     </div>
   );
