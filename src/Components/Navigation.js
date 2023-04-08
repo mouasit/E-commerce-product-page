@@ -2,65 +2,20 @@ import React, { useEffect, useRef } from "react";
 import { IconCart, IconMenu } from "./Icons";
 import logo from "../assets/images/logo.svg";
 import avatar from "../assets/images/image-avatar.png";
+import { handelHover } from "../helpers";
 
 export default function Navigation() {
   const nav = useRef(null);
   useEffect(() => {
-    const list = nav.current.querySelectorAll("li");
-    const buttons = nav.current.querySelectorAll("button");
-
-    buttons.forEach((e) => {
-      e.addEventListener("mouseover", () => {
-        e.classList.add("text-veryDarkBlue");
-        e.parentElement.classList.remove("border-transparent");
-        e.parentElement.classList.add("border-orange");
-      });
-      e.addEventListener("click", () => {
-        list.forEach((element) => {
-          element.querySelector("button").classList.remove("text-veryDarkBlue");
-          element.classList.remove("border-orange");
-          element.classList.add("border-transparent");
-          element.classList.remove("click");
-        });
-        e.classList.add("text-veryDarkBlue");
-        e.parentElement.classList.remove("border-transparent");
-        e.parentElement.classList.add("border-orange");
-        e.parentElement.classList.add("click");
-      });
-
-      e.addEventListener("focus", () => {
-        e.classList.add("text-veryDarkBlue");
-        e.parentElement.classList.remove("border-transparent");
-        e.parentElement.classList.add("border-orange");
-      });
-
-      e.addEventListener("mouseleave", () => {
-        if (!e.parentElement.classList.contains("click")) {
-          e.classList.remove("text-veryDarkBlue");
-          e.parentElement.classList.remove("border-orange");
-          e.parentElement.classList.add("border-transparent");
-        }
-      });
-      e.addEventListener("blur", () => {
-        console.log(5);
-        if (!e.parentElement.classList.contains("click")) {
-          e.classList.remove("text-veryDarkBlue");
-          e.parentElement.classList.remove("border-orange");
-          e.parentElement.classList.add("border-transparent");
-        }
-      });
-    });
+    handelHover(nav.current);
   }, []);
   return (
     <section className="flex items-center justify-between p-5 lg:p-0 border-b-[1px] border-grayishBlue">
       <div className="flex items-center gap-5 lg:gap-16">
-        <button
-          aria-label="icon menu"
-          className="relative top-[.1rem] lg:hidden"
-        >
+        <button aria-label="icon menu" className="lg:hidden">
           <IconMenu />
         </button>
-        <button aria-label="logo">
+        <button aria-label="logo" className="relative bottom-[1px]">
           <img src={logo} alt="logo" />
         </button>
         <nav className="hidden lg:block" ref={nav}>
