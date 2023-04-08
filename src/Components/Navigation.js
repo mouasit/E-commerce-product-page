@@ -11,27 +11,32 @@ export default function Navigation() {
 
     buttons.forEach((e) => {
       e.addEventListener("mouseover", () => {
+        e.classList.add("text-veryDarkBlue");
         e.parentElement.classList.remove("border-transparent");
         e.parentElement.classList.add("border-orange");
       });
       e.addEventListener("focus", () => {
         list.forEach((element) => {
+          element.querySelector("button").classList.remove("text-veryDarkBlue");
           element.classList.remove("border-orange");
           element.classList.add("border-transparent");
           element.classList.remove("click");
         });
+        e.classList.add("text-veryDarkBlue");
         e.parentElement.classList.remove("border-transparent");
         e.parentElement.classList.add("border-orange");
         e.parentElement.classList.add("click");
       });
       e.addEventListener("mouseleave", () => {
         if (!e.parentElement.classList.contains("click")) {
+          e.classList.remove("text-veryDarkBlue");
           e.parentElement.classList.remove("border-orange");
           e.parentElement.classList.add("border-transparent");
         }
       });
       e.addEventListener("blur", () => {
         if (!e.parentElement.classList.contains("click")) {
+          e.classList.remove("text-veryDarkBlue");
           e.parentElement.classList.remove("border-orange");
           e.parentElement.classList.add("border-transparent");
         }
