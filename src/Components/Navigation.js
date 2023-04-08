@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { IconCart, IconMenu } from "./Icons";
 import logo from "../assets/images/logo.svg";
 import avatar from "../assets/images/image-avatar.png";
 
 export default function Navigation() {
+  const nav = useRef(null);
   useEffect(() => {
-    const nav = document.querySelector("nav");
-    const list = nav.querySelectorAll("li");
-    const buttons = nav.querySelectorAll("button");
+    const list = nav.current.querySelectorAll("li");
+    const buttons = nav.current.querySelectorAll("button");
 
     buttons.forEach((e) => {
       e.addEventListener("mouseover", () => {
@@ -15,7 +15,7 @@ export default function Navigation() {
         e.parentElement.classList.remove("border-transparent");
         e.parentElement.classList.add("border-orange");
       });
-      e.addEventListener("focus", () => {
+      e.addEventListener("click", () => {
         list.forEach((element) => {
           element.querySelector("button").classList.remove("text-veryDarkBlue");
           element.classList.remove("border-orange");
@@ -27,6 +27,13 @@ export default function Navigation() {
         e.parentElement.classList.add("border-orange");
         e.parentElement.classList.add("click");
       });
+
+      e.addEventListener("focus", () => {
+        e.classList.add("text-veryDarkBlue");
+        e.parentElement.classList.remove("border-transparent");
+        e.parentElement.classList.add("border-orange");
+      });
+
       e.addEventListener("mouseleave", () => {
         if (!e.parentElement.classList.contains("click")) {
           e.classList.remove("text-veryDarkBlue");
@@ -35,6 +42,7 @@ export default function Navigation() {
         }
       });
       e.addEventListener("blur", () => {
+        console.log(5);
         if (!e.parentElement.classList.contains("click")) {
           e.classList.remove("text-veryDarkBlue");
           e.parentElement.classList.remove("border-orange");
@@ -55,7 +63,7 @@ export default function Navigation() {
         <button aria-label="logo">
           <img src={logo} alt="logo" />
         </button>
-        <nav className="hidden lg:block">
+        <nav className="hidden lg:block" ref={nav}>
           <ul className="flex items-center gap-8 font-normal text-md text-darkGrayishBlue">
             <li className="pt-10 border-b-[4px] pb-[2.25rem] border-transparent ">
               <button>Collections</button>
@@ -79,7 +87,7 @@ export default function Navigation() {
         <button>
           <IconCart />
         </button>
-        <button aria-label="avatar">
+        <button aria-label="avatar" className="rounded-full">
           <img src={avatar} alt="avatar" className="w-10 h-10" />
         </button>
       </div>
