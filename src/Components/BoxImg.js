@@ -1,12 +1,15 @@
 import React from "react";
 import productOne from "../assets/images/image-product-1.jpg";
-import productTwo from "../assets/images/image-product-2.jpg";
+import proneThumbnail from "../assets/images/image-product-1-thumbnail.jpg";
+import prtwoThumbnail from "../assets/images/image-product-2-thumbnail.jpg";
+import prthreeThumbnail from "../assets/images/image-product-3-thumbnail.jpg";
+import prfourThumbnail from "../assets/images/image-product-4-thumbnail.jpg";
 import { IconLeftArrow, IconRightArrow } from "./Icons";
 export default function BoxImg() {
   return (
     <section>
       <div className="relative flex items-center">
-        <img src={productOne} alt="product thumbnail" className="w-full" />
+        <img src={productOne} alt="product" className="w-full" />
         <button
           aria-label="previous arrow"
           className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 ml-5 lg:hidden"
@@ -20,8 +23,19 @@ export default function BoxImg() {
           <IconRightArrow />
         </button>
       </div>
-      <div>
-        <button aria-label="productOne"></button>
+      <div className="hidden lg:flex items-center justify-between">
+        <button aria-label="product one">
+          <img src={proneThumbnail} alt="product one" />
+        </button>
+        <button aria-label="product two">
+          <img src={prtwoThumbnail} alt="product two" />
+        </button>
+        <button aria-label="product three">
+          <img src={prthreeThumbnail} alt="product three" />
+        </button>
+        <button aria-label="product four">
+          <img src={prfourThumbnail} alt="product four" />
+        </button>
       </div>
     </section>
   );

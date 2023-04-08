@@ -51,3 +51,11 @@ export function IconRightArrow() {
     </svg>
   );
 }
+
+export function IconPlus() {
+
+}
+
+export function IconMinus() {
+
+}
