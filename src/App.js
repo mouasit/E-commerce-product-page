@@ -1,6 +1,11 @@
 import './App.css';
+import Navigation from './Components/Navigation';
 function App() {
-  return <div>E-commerce product page</div>;
+  return (
+    <>
+    <Navigation />
+    </>
+  );
 }
 
 export default App;
