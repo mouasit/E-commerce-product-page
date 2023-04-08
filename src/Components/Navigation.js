@@ -10,7 +10,7 @@ export default function Navigation() {
     handelHover(nav.current);
   }, []);
   return (
-    <section className="flex items-center justify-between p-5 lg:p-0 border-b-[1px] border-grayishBlue">
+    <section className="flex items-center justify-between p-5 lg:p-0 lg:mx-5 lg:border-b-[1px] lg:border-grayishBlue">
       <div className="flex items-center gap-5 lg:gap-16">
         <button aria-label="icon menu" className="lg:hidden">
           <IconMenu />
