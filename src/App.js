@@ -1,9 +1,13 @@
-import './App.css';
-import Navigation from './Components/Navigation';
+import "./App.css";
+import Navigation from "./Components/Navigation";
+import BoxImg from "./Components/BoxImg";
 function App() {
   return (
     <>
-    <Navigation />
+      <Navigation />
+      <main>
+        <BoxImg />
+      </main>
     </>
   );
 }

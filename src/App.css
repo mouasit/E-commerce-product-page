@@ -4,5 +4,5 @@
 @tailwind utilities;
 
 body{
-    @apply font-kumbh
+    @apply font-kumbh mx-auto lg:max-w-[1300px]
 }
