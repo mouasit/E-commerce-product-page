@@ -24,16 +24,16 @@ export default function BoxImg() {
         </button>
       </div>
       <div className="hidden lg:flex items-center gap-8">
-        <button aria-label="product one" className="">
-          <img src={proneThumbnail} alt="product one" className="border-2 border-orange rounded-xl"/>
+        <button aria-label="product one" className="border-2 border-orange rounded-xl overflow-hidden">
+          <img src={proneThumbnail} alt="product one" className="opacity-[.5]"/>
         </button>
-        <button aria-label="product two">
+        <button aria-label="product two" className="border-2 border-transparent rounded-xl overflow-hidden">
           <img src={prtwoThumbnail} alt="product two" />
         </button>
-        <button aria-label="product three">
+        <button aria-label="product three" className="border-2 border-transparent rounded-xl overflow-hidden">
           <img src={prthreeThumbnail} alt="product three" />
         </button>
-        <button aria-label="product four">
+        <button aria-label="product four" className="border-2 border-transparent rounded-xl overflow-hidden">
           <img src={prfourThumbnail} alt="product four" />
         </button>
       </div>

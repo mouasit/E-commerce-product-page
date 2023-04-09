@@ -7,10 +7,10 @@ export default function DetailsProduct() {
       <span className="uppercase font-bold text-orange tracking-widest mt-8">
         sneaker company
       </span>
-      <span className="capitalize font-bold text-[2.2rem] text-veryDarkBlue leading-[2.8rem] mt-2">
+      <span className="capitalize font-bold text-[2.2rem] text-veryDarkBlue leading-[2.8rem] mt-2 lg:w-[20rem]">
         fall limited edition sneakers
       </span>
-      <p className="text-darkGrayishBlue mt-3 lg:mt-0">
+      <p className="text-darkGrayishBlue mt-3 lg:mt-7 lg:w-[30rem]">
         Thes low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they'll withstand everything the
         weather can offer.
@@ -26,7 +26,7 @@ export default function DetailsProduct() {
         </div>
         <span className="text-grayishBlue font-bold line-through">$250.00</span>
       </div>
-      <div className="flex flex-col gap-4 mt-4 lg:flex-row">
+      <div className="flex flex-col gap-4 lg:gap-6 mt-4 lg:flex-row">
         <div className="relative bg-lightGrayishBlue flex justify-center items-center font-bold p-4 rounded-lg  lg:w-[15rem]">
           0
           <button className="absolute left-0 ml-5 rounded-full">
