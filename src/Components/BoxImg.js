@@ -4,7 +4,6 @@ import { thumbnails, imgProducts } from "../data";
 import ListImg from "./ListImg";
 import { useDisclosure } from "@chakra-ui/react";
 
-import { ChakraProvider } from "@chakra-ui/react";
 import {
   Modal,
   ModalOverlay,
