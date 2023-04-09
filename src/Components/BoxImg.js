@@ -1,15 +1,14 @@
-import React from "react";
-import productOne from "../assets/images/image-product-1.jpg";
-import proneThumbnail from "../assets/images/image-product-1-thumbnail.jpg";
-import prtwoThumbnail from "../assets/images/image-product-2-thumbnail.jpg";
-import prthreeThumbnail from "../assets/images/image-product-3-thumbnail.jpg";
-import prfourThumbnail from "../assets/images/image-product-4-thumbnail.jpg";
+import React, { useState } from "react";
 import { IconLeftArrow, IconRightArrow } from "./Icons";
+import { thumbnails,imgProducts } from "../data";
+import ListImg from "./ListImg";
 export default function BoxImg() {
+  const [state, setState] = useState(0);
+  let count = 0;
   return (
     <section className="lg:flex lg:flex-col lg:gap-8">
       <div className="relative flex items-center">
-        <img src={productOne} alt="product" className="w-full lg:rounded-xl" />
+        <img src={imgProducts[state]} alt="product" className="w-full lg:rounded-xl" />
         <button
           aria-label="previous arrow"
           className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 ml-5 lg:hidden"
@@ -24,18 +23,19 @@ export default function BoxImg() {
         </button>
       </div>
       <div className="hidden lg:flex items-center gap-8">
-        <button aria-label="product one" className="border-2 border-orange rounded-xl overflow-hidden">
-          <img src={proneThumbnail} alt="product one" className="opacity-[.5]"/>
-        </button>
-        <button aria-label="product two" className="border-2 border-transparent rounded-xl overflow-hidden">
-          <img src={prtwoThumbnail} alt="product two" />
-        </button>
-        <button aria-label="product three" className="border-2 border-transparent rounded-xl overflow-hidden">
-          <img src={prthreeThumbnail} alt="product three" />
-        </button>
-        <button aria-label="product four" className="border-2 border-transparent rounded-xl overflow-hidden">
-          <img src={prfourThumbnail} alt="product four" />
-        </button>
+        {thumbnails.map((e, index) => {
+          return (
+            <ListImg
+              thumbnail={e}
+              key={index}
+              state={{
+                state: state,
+                setState: setState,
+                count: count++,
+              }}
+            />
+          );
+        })}
       </div>
     </section>
   );

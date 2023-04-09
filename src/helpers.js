@@ -44,3 +44,16 @@ export function handelHover(element) {
     });
   });
 }
+
+export function getIndexElement(element) {
+  let listChild = element.currentTarget.parentNode?.childNodes;
+  let index = 0;
+
+  listChild?.forEach((e, i) => {
+    if (e === element.currentTarget) {
+      index = i;
+      return;
+    }
+  });
+  return index;
+}
