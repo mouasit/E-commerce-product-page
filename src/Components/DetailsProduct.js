@@ -10,7 +10,7 @@ export default function DetailsProduct() {
       <span className="capitalize font-bold text-[2.2rem] text-veryDarkBlue leading-[2.8rem] mt-2 lg:w-[20rem]">
         fall limited edition sneakers
       </span>
-      <p className="text-darkGrayishBlue mt-3 lg:mt-7 lg:w-[30rem]">
+      <p className="text-darkGrayishBlue mt-3 lg:mt-7 oneXl:w-[30rem]">
         Thes low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they'll withstand everything the
         weather can offer.

@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
+      screens: {
+        oneXl: "1188px",
+      },
       colors: {
         orange: "hsl(26, 100%, 55%)",
         paleOrange: "hsl(25, 100%, 94%)",
