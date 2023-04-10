@@ -30,13 +30,19 @@ export function IconCart(props) {
 
 export function IconLeftArrow() {
   return (
-    <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 12 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-4 h-4"
+    >
       <path
         d="M11 1 3 9l8 8"
         stroke="#1D2026"
         strokeWidth="3"
         fill="none"
         fillRule="evenodd"
+        className="group-hover:stroke-orange group-focus:stroke-orange"
       />
     </svg>
   );
@@ -44,13 +50,19 @@ export function IconLeftArrow() {
 
 export function IconRightArrow() {
   return (
-    <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 13 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-4 h-4"
+    >
       <path
         d="m2 1 8 8-8 8"
         stroke="#1D2026"
         strokeWidth="3"
         fill="none"
         fillRule="evenodd"
+        className="group-hover:stroke-orange group-focus:stroke-orange"
       />
     </svg>
   );
@@ -90,6 +102,25 @@ export function IconMinus() {
         />
       </defs>
       <use fill="#FF7E1B" fillRule="nonzero" xlinkHref="#a" />
+    </svg>
+  );
+}
+
+export function IconClose() {
+  return (
+    <svg
+      viewBox="0 0 14 15"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-5 h-5 fill-white group-hover:fill-orange"
+    >
+      <g clip-path="url(#clip0_1_4)">
+        <path d="M11.596 0.782L13.718 2.904L9.12 7.499L13.717 12.096L11.595 14.218L7 9.62L2.405 14.217L0.283 12.095L4.878 7.5L0.282 2.904L2.404 0.782L6.999 5.378L11.596 0.782Z" />
+      </g>
+      <defs>
+        <clipPath id="clip0_1_4">
+          <rect width="14" height="15" />
+        </clipPath>
+      </defs>
     </svg>
   );
 }

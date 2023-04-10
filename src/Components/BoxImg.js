@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { IconLeftArrow, IconRightArrow } from "./Icons";
+import { IconClose, IconLeftArrow, IconRightArrow } from "./Icons";
 import { thumbnails, imgProducts } from "../data";
 import ListImg from "./ListImg";
-import { useDisclosure } from "@chakra-ui/react";
-
+import { useDisclosure,useMediaQuery } from "@chakra-ui/react";
+import ModalImg from "./ModalImg";
 import {
   Modal,
   ModalOverlay,
@@ -14,6 +14,7 @@ import {
 export default function BoxImg() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [state, setState] = useState(0);
+  const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)')
   let count = 0;
   return (
     <>
@@ -22,13 +23,13 @@ export default function BoxImg() {
           <img src={imgProducts[state]} alt="product" className="w-full" />
           <button
             aria-label="previous arrow"
-            className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 ml-5"
+            className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 ml-5 group"
           >
             <IconLeftArrow />
           </button>
           <button
             aria-label="next arrow"
-            className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 mr-5 right-0"
+            className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 mr-5 right-0 group"
           >
             <IconRightArrow />
           </button>
@@ -55,26 +56,25 @@ export default function BoxImg() {
           })}
         </div>
       </section>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
-        <ModalOverlay />
-        <ModalContent>
-          <button
-            className="bg-green-900 absolute top-[-2rem] right-0"
-            onClick={onClose}
-          >
-            hello
-          </button>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalBody>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit,
-              voluptatum dolor veniam sunt, quis repudiandae illo ipsa labore
-              consequatur voluptas eligendi reiciendis aperiam fuga sed illum
-              iste quod ullam velit?
-            </p>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      {
+        isLargerThan1024?(
+          <Modal isOpen={isOpen} onClose={onClose} size={"lg"} isCentered>
+          <ModalOverlay />
+          <ModalContent background={"none"} shadow={"none"}>
+            <button
+              className="absolute top-[-2.5rem] right-1 rounded-full group"
+              onClick={onClose}
+            >
+              <IconClose />
+            </button>
+            <ModalBody padding={0} >
+              <ModalImg />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+        ):null
+      }
+
     </>
   );
 }
