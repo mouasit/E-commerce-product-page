@@ -9,19 +9,18 @@ export default function ListImg(props) {
         props.state.state === props.state.count
           ? "border-orange"
           : "border-transparent"
-      } rounded-xl overflow-hidden group`}
+      } relative rounded-xl overflow-hidden group`}
       onClick={(e) => {
         let index = getIndexElement(e);
         props.state.setState(index);
       }}
     >
-      <img
-        src={props.thumbnail}
-        alt="product"
-        className={` ${
-          props.state.state === props.state.count ? "opacity-[.5]" : ""
-        } group-hover:opacity-[.5] group-focus:opacity-[.5]`}
-      />
+      <img src={props.thumbnail} alt="product" />
+      <div
+        className={`absolute w-full h-full top-0 group-hover:bg-white group-focus:bg-white group-hover:opacity-[.5] group-focus:opacity-[.5] ${
+          props.state.state === props.state.count ? "bg-white opacity-[.5]" : ""
+        }`}
+      ></div>
     </button>
   );
 }

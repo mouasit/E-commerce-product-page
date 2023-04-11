@@ -42,7 +42,7 @@ export function IconLeftArrow() {
         strokeWidth="3"
         fill="none"
         fillRule="evenodd"
-        className="group-hover:stroke-orange group-focus:stroke-orange"
+        className="group-hover:stroke-orange"
       />
     </svg>
   );
@@ -62,7 +62,7 @@ export function IconRightArrow() {
         strokeWidth="3"
         fill="none"
         fillRule="evenodd"
-        className="group-hover:stroke-orange group-focus:stroke-orange"
+        className="group-hover:stroke-orange"
       />
     </svg>
   );

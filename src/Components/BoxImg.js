@@ -60,14 +60,14 @@ export default function BoxImg() {
         isLargerThan1024?(
           <Modal isOpen={isOpen} onClose={onClose} size={"lg"} isCentered>
           <ModalOverlay />
-          <ModalContent background={"none"} shadow={"none"}>
+          <ModalContent background={"none"}  shadow={"none"} >
             <button
               className="absolute top-[-2.5rem] right-1 rounded-full group"
               onClick={onClose}
             >
               <IconClose />
             </button>
-            <ModalBody padding={0} >
+            <ModalBody padding={0} margin={0}>
               <ModalImg />
             </ModalBody>
           </ModalContent>

@@ -8,7 +8,7 @@ export default function ModalImg() {
   let count = 0;
 
   return (
-    <section className="lg:flex lg:flex-col lg:gap-8">
+    <section className="flex lg:flex-col">
       <div className="relative flex items-center">
         <img
           src={imgProducts[state]}
@@ -28,7 +28,7 @@ export default function ModalImg() {
           <IconRightArrow />
         </button>
       </div>
-      {/* <div className="hidden lg:flex items-center gap-8">
+      <div className="flex items-center gap-8 relative top-[2rem]">
           {thumbnails.map((e, index) => {
             return (
               <ListImg
@@ -42,7 +42,7 @@ export default function ModalImg() {
               />
             );
           })}
-        </div> */}
+        </div>
     </section>
   );
 }
