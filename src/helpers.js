@@ -57,3 +57,39 @@ export function getIndexElement(element) {
   });
   return index;
 }
+
+export function slideLeft(slide, index, lengthThubmnail, setState) {
+  if (index - 1 < 0) {
+    slide.current.classList.remove("slide-left");
+    slide.current.classList.remove("slide-right");
+    setTimeout(() => {
+      slide.current.classList.add("slide-right");
+      setState(lengthThubmnail - 1);
+    }, 1);
+  } else {
+    slide.current.classList.remove("slide-left");
+    slide.current.classList.remove("slide-right");
+    setTimeout(() => {
+      slide.current.classList.add("slide-right");
+      setState(index - 1);
+    }, 1);
+  }
+}
+
+export function slideRight(slide, index, lengthThubmnail, setState) {
+  if (index + 1 > lengthThubmnail - 1) {
+    slide.current.classList.remove("slide-left");
+    slide.current.classList.remove("slide-right");
+    setTimeout(() => {
+      slide.current.classList.add("slide-left");
+      setState(0);
+    }, 1);
+  } else {
+    slide.current.classList.remove("slide-left");
+    slide.current.classList.remove("slide-right");
+    setTimeout(() => {
+      slide.current.classList.add("slide-left");
+      setState(index + 1);
+    }, 1);
+  }
+}

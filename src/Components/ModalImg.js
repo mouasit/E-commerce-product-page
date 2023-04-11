@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { thumbnails, imgProducts } from "../data";
 import { IconLeftArrow, IconRightArrow } from "./Icons";
 import ListImg from "./ListImg";
 import "animate.css";
 import { useRef } from "react";
+import { slideLeft, slideRight } from "../helpers";
 
 export default function ModalImg(props) {
   const slide = useRef(null);
@@ -22,21 +23,12 @@ export default function ModalImg(props) {
           aria-label="previous arrow"
           className="absolute bg-white flex justify-center items-center rounded-full w-12 h-12 left-[-1.2rem] group"
           onClick={() => {
-            if (props.state.state - 1 < 0) {
-              slide.current.classList.remove("slide-left");
-              slide.current.classList.remove("slide-right");
-              setTimeout(() => {
-                slide.current.classList.add("slide-right");
-                props.state.setState(imgProducts.length - 1);
-              }, 1);
-            } else {
-              slide.current.classList.remove("slide-left");
-              slide.current.classList.remove("slide-right");
-              setTimeout(() => {
-                slide.current.classList.add("slide-right");
-                props.state.setState(props.state.state - 1);
-              }, 1);
-            }
+            slideLeft(
+              slide,
+              props.state.state,
+              imgProducts.length,
+              props.state.setState
+            );
           }}
         >
           <IconLeftArrow />
@@ -45,21 +37,12 @@ export default function ModalImg(props) {
           aria-label="next arrow"
           className="absolute bg-white flex justify-center items-center rounded-full w-12 h-12 right-[-1.2rem] group"
           onClick={() => {
-            if (props.state.state + 1 > imgProducts.length - 1) {
-              slide.current.classList.remove("slide-left");
-              slide.current.classList.remove("slide-right");
-              setTimeout(() => {
-                slide.current.classList.add("slide-left");
-                props.state.setState(0);
-              }, 1);
-            } else {
-              slide.current.classList.remove("slide-left");
-              slide.current.classList.remove("slide-right");
-              setTimeout(() => {
-                slide.current.classList.add("slide-left");
-                props.state.setState(props.state.state + 1);
-              }, 1);
-            }
+            slideRight(
+              slide,
+              props.state.state,
+              imgProducts.length,
+              props.state.setState
+            );
           }}
         >
           <IconRightArrow />

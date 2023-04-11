@@ -4,13 +4,7 @@ import { thumbnails, imgProducts } from "../data";
 import ListImg from "./ListImg";
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import ModalImg from "./ModalImg";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-} from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalBody } from "@chakra-ui/react";
 export default function BoxImg() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [state, setState] = useState(0);
@@ -39,7 +33,10 @@ export default function BoxImg() {
         </div>
         <button
           className="hidden lg:block rounded-2xl overflow-hidden"
-          onClick={onOpen}
+          onClick={() => {
+            onOpen();
+            setStateModal(0);
+          }}
         >
           <img src={imgProducts[state]} alt="product" className="w-full" />
         </button>
