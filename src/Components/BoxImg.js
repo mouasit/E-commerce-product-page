@@ -31,7 +31,7 @@ export default function BoxImg() {
             aria-label="previous arrow"
             className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 ml-5 group"
             onClick={() => {
-              slideLeft(slide, state, imgProducts.length, setState);
+              slideLeft(state, imgProducts.length, setState);
             }}
           >
             <IconLeftArrow />
@@ -40,7 +40,7 @@ export default function BoxImg() {
             aria-label="next arrow"
             className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 mr-5 right-0 group"
             onClick={() => {
-              slideRight(slide, state, imgProducts.length, setState);
+              slideRight(state, imgProducts.length, setState);
             }}
           >
             <IconRightArrow />
@@ -79,7 +79,7 @@ export default function BoxImg() {
               className="absolute top-[-2.5rem] right-1 rounded-full group"
               onClick={onClose}
             >
-              <IconClose edit="w-5 h-5 fill-white group-hover:fill-orange"/>
+              <IconClose edit="w-5 h-5 fill-white group-hover:fill-orange" />
             </button>
             <ModalBody padding={0} margin={0}>
               <ModalImg

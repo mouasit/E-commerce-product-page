@@ -19,6 +19,9 @@ module.exports = {
       fontFamily: {
         kumbh: ["Kumbh Sans", "sans-serif"],
       },
+      boxShadow: {
+        "3xl": "hsla(26, 100%, 55%, 0.477) 0px 8px 24px",
+      },
     },
   },
   plugins: [],

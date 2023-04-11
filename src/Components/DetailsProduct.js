@@ -36,7 +36,7 @@ export default function DetailsProduct() {
             <IconPlus />
           </button>
         </div>
-        <button className="p-4 flex items-center justify-center gap-4 bg-orange w-full rounded-lg text-white font-bold shadow">
+        <button className="p-4 flex items-center justify-center gap-4 bg-orange w-full rounded-lg text-white font-bold shadow-3xl">
             <IconCart fill="fill-white"/>
             Add to cart
         </button>

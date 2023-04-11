@@ -3,9 +3,14 @@ import Navigation from "./Components/Navigation";
 import BoxImg from "./Components/BoxImg";
 import DetailsProduct from "./Components/DetailsProduct";
 import { ChakraProvider } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
+const fonts = {
+  body: "Kumbh Sans",
+};
+const theme = extendTheme({ fonts });
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <div className="mx-auto lg:max-w-[1300px]">
         <Navigation />
         <main className="lg:flex lg:mx-20 lg:items-center lg:gap-32 lg:my-16 ">

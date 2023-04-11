@@ -2,7 +2,6 @@ import React from "react";
 import { thumbnails, imgProducts } from "../data";
 import { IconLeftArrow, IconRightArrow } from "./Icons";
 import ListImg from "./ListImg";
-import "animate.css";
 import { useRef } from "react";
 import { slideLeft, slideRight } from "../helpers";
 
@@ -24,7 +23,6 @@ export default function ModalImg(props) {
           className="absolute bg-white flex justify-center items-center rounded-full w-12 h-12 left-[-1.2rem] group"
           onClick={() => {
             slideLeft(
-              slide,
               props.state.state,
               imgProducts.length,
               props.state.setState
@@ -38,7 +36,6 @@ export default function ModalImg(props) {
           className="absolute bg-white flex justify-center items-center rounded-full w-12 h-12 right-[-1.2rem] group"
           onClick={() => {
             slideRight(
-              slide,
               props.state.state,
               imgProducts.length,
               props.state.setState

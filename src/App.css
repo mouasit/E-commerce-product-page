@@ -2,21 +2,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  @apply font-kumbh;
-}
-
-.shadow {
-  box-shadow: hsla(26, 100%, 55%, 0.477) 0px 8px 24px;
-}
-
-.slide-left {
-  animation: slideInLeft;
-  animation-duration: .1s;
-}
-
-.slide-right {
-  animation: slideInRight;
-  animation-duration: .1s;
-}
