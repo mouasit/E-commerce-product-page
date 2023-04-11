@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IconClose, IconLeftArrow, IconRightArrow } from "./Icons";
 import { thumbnails, imgProducts } from "../data";
 import ListImg from "./ListImg";
-import { useDisclosure,useMediaQuery } from "@chakra-ui/react";
+import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import ModalImg from "./ModalImg";
 import {
   Modal,
@@ -14,8 +14,11 @@ import {
 export default function BoxImg() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [state, setState] = useState(0);
-  const [isLargerThan1024] = useMediaQuery('(min-width: 1024px)')
+  const [stateModal, setStateModal] = useState(0);
+  const [isLargerThan1024] = useMediaQuery("(min-width: 1024px)");
   let count = 0;
+  let countModal = 0;
+
   return (
     <>
       <section className="lg:flex lg:flex-col lg:gap-8">
@@ -56,11 +59,10 @@ export default function BoxImg() {
           })}
         </div>
       </section>
-      {
-        isLargerThan1024?(
-          <Modal isOpen={isOpen} onClose={onClose} size={"lg"} isCentered>
+      {isLargerThan1024 ? (
+        <Modal isOpen={isOpen} onClose={onClose} size={"lg"} isCentered>
           <ModalOverlay />
-          <ModalContent background={"none"}  shadow={"none"} >
+          <ModalContent background={"none"} shadow={"none"}>
             <button
               className="absolute top-[-2.5rem] right-1 rounded-full group"
               onClick={onClose}
@@ -68,13 +70,17 @@ export default function BoxImg() {
               <IconClose />
             </button>
             <ModalBody padding={0} margin={0}>
-              <ModalImg />
+              <ModalImg
+                state={{
+                  state: stateModal,
+                  setState: setStateModal,
+                  count: countModal,
+                }}
+              />
             </ModalBody>
           </ModalContent>
         </Modal>
-        ):null
-      }
-
+      ) : null}
     </>
   );
 }
