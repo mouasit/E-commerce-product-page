@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { IconClose, IconLeftArrow, IconRightArrow } from "./Icons";
 import { thumbnails, imgProducts } from "../data";
+import { slideRight, slideLeft } from "../helpers";
 import ListImg from "./ListImg";
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import ModalImg from "./ModalImg";
@@ -10,6 +11,7 @@ export default function BoxImg() {
   const [state, setState] = useState(0);
   const [stateModal, setStateModal] = useState(0);
   const [isLargerThan1024] = useMediaQuery("(min-width: 1024px)");
+  const slide = useRef(null);
   let count = 0;
   let countModal = 0;
 
@@ -17,16 +19,29 @@ export default function BoxImg() {
     <>
       <section className="lg:flex lg:flex-col lg:gap-8">
         <div className="relative flex items-center lg:hidden">
-          <img src={imgProducts[state]} alt="product" className="w-full" />
+          <div className="bg-[#CB6421] overflow-hidden">
+            <img
+              src={imgProducts[state]}
+              alt="product"
+              className="w-full"
+              ref={slide}
+            />
+          </div>
           <button
             aria-label="previous arrow"
             className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 ml-5 group"
+            onClick={() => {
+              slideLeft(slide, state, imgProducts.length, setState);
+            }}
           >
             <IconLeftArrow />
           </button>
           <button
             aria-label="next arrow"
             className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 mr-5 right-0 group"
+            onClick={() => {
+              slideRight(slide, state, imgProducts.length, setState);
+            }}
           >
             <IconRightArrow />
           </button>
