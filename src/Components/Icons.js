@@ -106,12 +106,12 @@ export function IconMinus() {
   );
 }
 
-export function IconClose() {
+export function IconClose(props) {
   return (
     <svg
       viewBox="0 0 14 15"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-5 h-5 fill-white group-hover:fill-orange"
+      className={props.edit}
     >
       <g clipPath="url(#clip0_1_4)">
         <path d="M11.596 0.782L13.718 2.904L9.12 7.499L13.717 12.096L11.595 14.218L7 9.62L2.405 14.217L0.283 12.095L4.878 7.5L0.282 2.904L2.404 0.782L6.999 5.378L11.596 0.782Z" />

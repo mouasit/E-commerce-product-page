@@ -79,7 +79,7 @@ export default function BoxImg() {
               className="absolute top-[-2.5rem] right-1 rounded-full group"
               onClick={onClose}
             >
-              <IconClose />
+              <IconClose edit="w-5 h-5 fill-white group-hover:fill-orange"/>
             </button>
             <ModalBody padding={0} margin={0}>
               <ModalImg
