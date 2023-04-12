@@ -29,14 +29,14 @@ export default function DetailsProduct() {
       <div className="flex flex-col gap-4 lg:gap-6 mt-4 lg:flex-row">
         <div className="relative bg-lightGrayishBlue flex justify-center items-center font-bold p-4 rounded-lg  lg:w-[15rem]">
           0
-          <button className="absolute left-0 ml-5 rounded-full">
+          <button className="absolute left-0 ml-5 rounded-full hover:opacity-[.5]">
             <IconMinus />
           </button>
-          <button className="absolute right-0 mr-5 rounded-full">
+          <button className="absolute right-0 mr-5 rounded-full hover:opacity-[.5]">
             <IconPlus />
           </button>
         </div>
-        <button className="p-4 flex items-center justify-center gap-4 bg-orange w-full rounded-lg text-white font-bold shadow-3xl">
+        <button className="p-4 flex items-center justify-center gap-4 bg-orange w-full rounded-lg text-white font-bold shadow-3xl hover:opacity-[.5]">
             <IconCart fill="fill-white"/>
             Add to cart
         </button>

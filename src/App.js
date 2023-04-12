@@ -4,19 +4,24 @@ import BoxImg from "./Components/BoxImg";
 import DetailsProduct from "./Components/DetailsProduct";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
+import React, { useState } from "react";
 const fonts = {
   body: "Kumbh Sans",
 };
 const theme = extendTheme({ fonts });
+export const CartContext = React.createContext({});
 function App() {
+  const [cart, setCart] = useState([]);
   return (
     <ChakraProvider theme={theme}>
       <div className="mx-auto lg:max-w-[1300px]">
-        <Navigation />
-        <main className="lg:flex lg:mx-20 lg:items-center lg:gap-32 lg:my-16 ">
-          <BoxImg />
-          <DetailsProduct />
-        </main>
+        <CartContext.Provider value={{ cart: cart, setCart: setCart }}>
+          <Navigation />
+          <main className="lg:flex lg:mx-20 lg:items-center lg:gap-32 lg:my-16 ">
+            <BoxImg />
+            <DetailsProduct />
+          </main>
+        </CartContext.Provider>
       </div>
     </ChakraProvider>
   );

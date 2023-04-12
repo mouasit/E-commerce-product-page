@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { IconCart, IconClose, IconMenu } from "./Icons";
 import logo from "../assets/images/logo.svg";
 import avatar from "../assets/images/image-avatar.png";
@@ -11,18 +11,27 @@ import {
 } from "@chakra-ui/react";
 
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+} from "@chakra-ui/react";
+import { CartContext } from "../App";
+import Cart from "./Cart";
 
 export default function Navigation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const nav = useRef(null);
   const [isLargerThan1024] = useMediaQuery("(min-width: 1024px)");
+  const CartData = useContext(CartContext);
   useEffect(() => {
     handelHover(nav.current);
   }, []);
   return (
     <>
-      <section className="flex items-center justify-between p-5 lg:p-0 lg:mx-5 lg:border-b-[1px] lg:border-grayishBlue">
+      <section className="flex items-center justify-between relative p-5 lg:p-0 lg:mx-5 lg:border-b-[1px] lg:border-grayishBlue">
         <div className="flex items-center gap-5 lg:gap-16">
           <button aria-label="icon menu" className="lg:hidden" onClick={onOpen}>
             <IconMenu />
@@ -50,11 +59,41 @@ export default function Navigation() {
             </ul>
           </nav>
         </div>
-        <div className="flex items-center gap-7 lg:gap-12">
-          <button>
-            <IconCart />
-          </button>
-          <button aria-label="avatar" className="rounded-full">
+        <div className=" flex items-center gap-7 lg:gap-12">
+          <Popover>
+            {({ isOpen, onClose }) => (
+              <>
+                <PopoverTrigger>
+                  <button className="group relative">
+                    {CartData.cart.length ? (
+                      <span className="absolute bottom-[.8rem] right-[-9px] px-2 text-[.6rem] rounded-full text-white font-bold bg-orange">
+                        {CartData.cart.length}
+                      </span>
+                    ) : null}
+
+                    <IconCart />
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent
+                  boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}
+                  border={"none"}
+                  backgroundColor={"white"}
+                  top={5}
+                  borderRadius={".5rem"}
+
+                >
+                  <PopoverBody padding={0}>
+                    <Cart />
+                  </PopoverBody>
+                </PopoverContent>
+              </>
+            )}
+          </Popover>
+
+          <button
+            aria-label="avatar"
+            className="rounded-full border-2 border-transparent hover:border-orange"
+          >
             <img src={avatar} alt="avatar" className="w-10 h-10" />
           </button>
         </div>
