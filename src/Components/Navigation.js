@@ -30,7 +30,12 @@ export default function Navigation() {
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
-      if (box.current && click && !box.current.contains(e.target)) {
+      if (
+        contentBox.current &&
+        box.current &&
+        click &&
+        !box.current.contains(e.target)
+      ) {
         box.current.querySelector("svg").classList.remove("fill-veryDarkBlue");
         box.current.querySelector("svg").classList.add("fill-[#69707D]");
         contentBox.current.classList.toggle("animate-fadeIn");
@@ -103,6 +108,21 @@ export default function Navigation() {
           <button
             aria-label="avatar"
             className="rounded-full border-2 border-transparent hover:border-orange"
+            onFocus={() => {
+              if (click) {
+                box.current
+                  .querySelector("svg")
+                  .classList.remove("fill-veryDarkBlue");
+                box.current
+                  .querySelector("svg")
+                  .classList.add("fill-[#69707D]");
+                contentBox.current.classList.toggle("animate-fadeIn");
+                contentBox.current.classList.toggle("animate-fadeOut");
+                setTimeout(() => {
+                  setClick(false);
+                }, 100);
+              }
+            }}
           >
             <img src={avatar} alt="avatar" className="w-10 h-10" />
           </button>

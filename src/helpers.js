@@ -35,7 +35,6 @@ export function handelHover(element) {
       }
     });
     e.addEventListener("blur", () => {
-      console.log(5);
       if (!e.parentElement.classList.contains("click")) {
         e.classList.remove("text-veryDarkBlue");
         e.parentElement.classList.remove("border-orange");
