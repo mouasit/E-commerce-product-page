@@ -53,13 +53,21 @@ export default function DetailsProduct() {
         <button
           className="p-4 flex items-center justify-center gap-4 bg-orange w-full rounded-lg text-white font-bold shadow-3xl hover:opacity-[.5]"
           onClick={() => {
-            let product = {
-              name: "fall limited edition sneakers",
-              picture: imgProducts[0],
-              price: "125",
-              quantity: count,
-            };
-            cartData.setCart(product);
+            if (count > 0) {
+              let tempQuantity = cartData.cart.quantity;
+              if (tempQuantity === undefined) tempQuantity = 0;
+
+              let res = count + tempQuantity;
+              if (res > 5) res = 5;
+              let product = {
+                name: "fall limited edition sneakers",
+                picture: imgProducts[0],
+                price: "125",
+                quantity: res,
+              };
+              setCount(0);
+              cartData.setCart(product);
+            }
           }}
         >
           <IconCart fill="fill-white" />

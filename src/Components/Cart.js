@@ -45,7 +45,11 @@ export default function Cart() {
                 </span>
               )}
             </div>
-            <button>
+            <button
+              onClick={() => {
+                CartData.setCart({});
+              }}
+            >
               <IconDelete />
             </button>
           </div>
