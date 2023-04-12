@@ -11,7 +11,7 @@ const fonts = {
 const theme = extendTheme({ fonts });
 export const CartContext = React.createContext({});
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
   return (
     <ChakraProvider theme={theme}>
       <div className="mx-auto lg:max-w-[1300px]">

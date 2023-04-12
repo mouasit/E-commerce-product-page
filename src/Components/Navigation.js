@@ -85,25 +85,25 @@ export default function Navigation() {
               }}
             >
               {CartData.cart.quantity > 0 ? (
-                <span
-                  className="absolute bottom-[.8rem] right-[-9px] px-2 text-[.6rem] rounded-full text-white font-bold bg-orange"
-                  ref={contentBox}
-                >
+                <span className="absolute bottom-[.8rem] right-[-9px] px-2 text-[.6rem] rounded-full text-white font-bold bg-orange">
                   {CartData.cart.quantity}
                 </span>
               ) : null}
               <IconCart />
             </button>
-            {click ? (
-              <div
-                className="absolute z-[999] w-full lg:w-[23rem] left-0  lg:right-0 1xl:right-auto lg:left-auto flex justify-center top-[6rem] h-64 lg:h-64 lg:top-[5.2rem] 1xl:top-10 animate-fadeIn "
-                ref={contentBox}
-              >
-                <div className="rounded-[.5rem] lg:w-full w-[97%] bg-white shadow-4xl">
-                  <Cart />
+            {
+              (console.log("click: ", click),
+              click ? (
+                <div
+                  className="absolute z-[999] w-full lg:w-[23rem] left-0  lg:right-0 1xl:right-auto lg:left-auto flex justify-center top-[6rem] h-64 lg:h-64 lg:top-[5.2rem] 1xl:top-10 animate-fadeIn "
+                  ref={contentBox}
+                >
+                  <div className="rounded-[.5rem] lg:w-full w-[97%] bg-white shadow-4xl">
+                    <Cart />
+                  </div>
                 </div>
-              </div>
-            ) : null}
+              ) : null)
+            }
           </div>
           <button
             aria-label="avatar"
