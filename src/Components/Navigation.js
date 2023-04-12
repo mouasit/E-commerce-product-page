@@ -11,12 +11,6 @@ import {
 } from "@chakra-ui/react";
 
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverBody,
-} from "@chakra-ui/react";
 import { CartContext } from "../App";
 import Cart from "./Cart";
 
@@ -60,36 +54,22 @@ export default function Navigation() {
           </nav>
         </div>
         <div className=" flex items-center gap-7 lg:gap-12">
-          <Popover>
-            {({ isOpen, onClose }) => (
-              <>
-                <PopoverTrigger>
-                  <button className="group relative">
-                    {CartData.cart.length ? (
-                      <span className="absolute bottom-[.8rem] right-[-9px] px-2 text-[.6rem] rounded-full text-white font-bold bg-orange">
-                        {CartData.cart.length}
-                      </span>
-                    ) : null}
+          <div className="1xl:relative flex justify-center">
+            <button className="group relative">
+              {CartData.cart.length ? (
+                <span className="absolute bottom-[.8rem] right-[-9px] px-2 text-[.6rem] rounded-full text-white font-bold bg-orange">
+                  {CartData.cart.length}
+                </span>
+              ) : null}
 
-                    <IconCart />
-                  </button>
-                </PopoverTrigger>
-                <PopoverContent
-                  boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}
-                  border={"none"}
-                  backgroundColor={"white"}
-                  top={5}
-                  borderRadius={".5rem"}
-
-                >
-                  <PopoverBody padding={0}>
-                    <Cart />
-                  </PopoverBody>
-                </PopoverContent>
-              </>
-            )}
-          </Popover>
-
+              <IconCart />
+            </button>
+            <div className="absolute z-[999] w-full lg:w-[20rem] left-0  lg:right-0 1xl:right-auto lg:left-auto flex justify-center top-[6rem] h-64 lg:h-60 lg:top-[5.2rem] 1xl:top-10">
+              <div className="rounded-[.5rem] lg:w-full w-[97%] bg-white shadow-4xl">
+                <Cart />
+              </div>
+            </div>
+          </div>
           <button
             aria-label="avatar"
             className="rounded-full border-2 border-transparent hover:border-orange"

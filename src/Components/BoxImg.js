@@ -19,14 +19,12 @@ export default function BoxImg() {
     <>
       <section className="lg:flex lg:flex-col lg:gap-8">
         <div className="relative flex items-center lg:hidden">
-          <div className="bg-[#CB6421] overflow-hidden">
-            <img
+        <img
               src={imgProducts[state]}
               alt="product"
               className="w-full"
               ref={slide}
             />
-          </div>
           <button
             aria-label="previous arrow"
             className="absolute bg-white flex justify-center items-center rounded-full w-9 h-9 ml-5 group"

@@ -21,6 +21,10 @@ module.exports = {
       },
       boxShadow: {
         "3xl": "hsla(26, 100%, 55%, 0.477) 0px 8px 24px",
+        "4xl": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+      },
+      screens: {
+        "1xl": "1437px",
       },
     },
   },
