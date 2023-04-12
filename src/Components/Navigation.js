@@ -9,6 +9,7 @@ import {
   DrawerOverlay,
   DrawerContent,
 } from "@chakra-ui/react";
+import { handelCart } from "../helpers";
 
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { CartContext } from "../App";
@@ -18,6 +19,7 @@ export default function Navigation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [click, setClick] = useState(false);
   const box = useRef(null);
+  const contentBox = useRef(null);
   const btnRef = React.useRef();
   const nav = useRef(null);
   const [isLargerThan1024] = useMediaQuery("(min-width: 1024px)");
@@ -31,7 +33,11 @@ export default function Navigation() {
       if (box.current && click && !box.current.contains(e.target)) {
         box.current.querySelector("svg").classList.remove("fill-veryDarkBlue");
         box.current.querySelector("svg").classList.add("fill-[#69707D]");
-        setClick(false);
+        contentBox.current.classList.toggle("animate-fadeIn");
+        contentBox.current.classList.toggle("animate-fadeOut");
+        setTimeout(() => {
+          setClick(false);
+        }, 100);
       }
     });
   }, [click]);
@@ -70,34 +76,24 @@ export default function Navigation() {
             <button
               className="group relative"
               onClick={(e) => {
-                if (click) {
-                  e.currentTarget
-                    .querySelector("svg")
-                    .classList.remove("fill-veryDarkBlue");
-                  e.currentTarget
-                    .querySelector("svg")
-                    .classList.add("fill-[#69707D]");
-                  setClick(false);
-                } else {
-                  e.currentTarget
-                    .querySelector("svg")
-                    .classList.remove("fill-[#69707D]");
-                  e.currentTarget
-                    .querySelector("svg")
-                    .classList.add("fill-veryDarkBlue");
-                  setClick(true);
-                }
+                handelCart(e, click, contentBox, setClick);
               }}
             >
               {CartData.cart.length ? (
-                <span className="absolute bottom-[.8rem] right-[-9px] px-2 text-[.6rem] rounded-full text-white font-bold bg-orange">
+                <span
+                  className="absolute bottom-[.8rem] right-[-9px] px-2 text-[.6rem] rounded-full text-white font-bold bg-orange"
+                  ref={contentBox}
+                >
                   {CartData.cart.length}
                 </span>
               ) : null}
               <IconCart />
             </button>
             {click ? (
-              <div className="absolute z-[999] w-full lg:w-[20rem] left-0  lg:right-0 1xl:right-auto lg:left-auto flex justify-center top-[6rem] h-64 lg:h-60 lg:top-[5.2rem] 1xl:top-10">
+              <div
+                className="absolute z-[999] w-full lg:w-[20rem] left-0  lg:right-0 1xl:right-auto lg:left-auto flex justify-center top-[6rem] h-64 lg:h-60 lg:top-[5.2rem] 1xl:top-10 animate-fadeIn "
+                ref={contentBox}
+              >
                 <div className="rounded-[.5rem] lg:w-full w-[97%] bg-white shadow-4xl">
                   <Cart />
                 </div>

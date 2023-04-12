@@ -26,6 +26,29 @@ module.exports = {
       screens: {
         "1xl": "1437px",
       },
+      animation: {
+        fadeIn: "fadeIn 0.2s",
+        fadeOut: "fadeOut 0.2s",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
+
+        fadeOut: {
+          "0%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+          },
+        },
+      },
     },
   },
   plugins: [],

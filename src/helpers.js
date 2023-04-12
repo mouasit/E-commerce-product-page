@@ -67,3 +67,25 @@ export function slideRight(index, lengthThubmnail, setState) {
   if (index + 1 > lengthThubmnail - 1) setState(0);
   else setState(index + 1);
 }
+
+export function handelCart(element, click, contentBox, setClick) {
+  if (click) {
+    element.currentTarget
+      .querySelector("svg")
+      .classList.remove("fill-veryDarkBlue");
+    element.currentTarget.querySelector("svg").classList.add("fill-[#69707D]");
+    contentBox.current.classList.toggle("animate-fadeIn");
+    contentBox.current.classList.toggle("animate-fadeOut");
+    setTimeout(() => {
+      setClick(false);
+    }, 100);
+  } else {
+    element.currentTarget
+      .querySelector("svg")
+      .classList.remove("fill-[#69707D]");
+    element.currentTarget
+      .querySelector("svg")
+      .classList.add("fill-veryDarkBlue");
+    setClick(true);
+  }
+}
