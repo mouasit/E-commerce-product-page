@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext, useState } from "react";
 import { IconCart, IconClose, IconMenu } from "./Icons";
 import logo from "../assets/images/logo.svg";
 import avatar from "../assets/images/image-avatar.png";
@@ -16,6 +16,8 @@ import Cart from "./Cart";
 
 export default function Navigation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [click, setClick] = useState(false);
+  const box = useRef(null);
   const btnRef = React.useRef();
   const nav = useRef(null);
   const [isLargerThan1024] = useMediaQuery("(min-width: 1024px)");
@@ -23,6 +25,16 @@ export default function Navigation() {
   useEffect(() => {
     handelHover(nav.current);
   }, []);
+
+  useEffect(() => {
+    document.addEventListener("click", (e) => {
+      if (box.current && click && !box.current.contains(e.target)) {
+        box.current.querySelector("svg").classList.remove("fill-veryDarkBlue");
+        box.current.querySelector("svg").classList.add("fill-[#69707D]");
+        setClick(false);
+      }
+    });
+  }, [click]);
   return (
     <>
       <section className="flex items-center justify-between relative p-5 lg:p-0 lg:mx-5 lg:border-b-[1px] lg:border-grayishBlue">
@@ -54,21 +66,43 @@ export default function Navigation() {
           </nav>
         </div>
         <div className=" flex items-center gap-7 lg:gap-12">
-          <div className="1xl:relative flex justify-center">
-            <button className="group relative">
+          <div className="1xl:relative flex justify-center" ref={box}>
+            <button
+              className="group relative"
+              onClick={(e) => {
+                if (click) {
+                  e.currentTarget
+                    .querySelector("svg")
+                    .classList.remove("fill-veryDarkBlue");
+                  e.currentTarget
+                    .querySelector("svg")
+                    .classList.add("fill-[#69707D]");
+                  setClick(false);
+                } else {
+                  e.currentTarget
+                    .querySelector("svg")
+                    .classList.remove("fill-[#69707D]");
+                  e.currentTarget
+                    .querySelector("svg")
+                    .classList.add("fill-veryDarkBlue");
+                  setClick(true);
+                }
+              }}
+            >
               {CartData.cart.length ? (
                 <span className="absolute bottom-[.8rem] right-[-9px] px-2 text-[.6rem] rounded-full text-white font-bold bg-orange">
                   {CartData.cart.length}
                 </span>
               ) : null}
-
               <IconCart />
             </button>
-            <div className="absolute z-[999] w-full lg:w-[20rem] left-0  lg:right-0 1xl:right-auto lg:left-auto flex justify-center top-[6rem] h-64 lg:h-60 lg:top-[5.2rem] 1xl:top-10">
-              <div className="rounded-[.5rem] lg:w-full w-[97%] bg-white shadow-4xl">
-                <Cart />
+            {click ? (
+              <div className="absolute z-[999] w-full lg:w-[20rem] left-0  lg:right-0 1xl:right-auto lg:left-auto flex justify-center top-[6rem] h-64 lg:h-60 lg:top-[5.2rem] 1xl:top-10">
+                <div className="rounded-[.5rem] lg:w-full w-[97%] bg-white shadow-4xl">
+                  <Cart />
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
           <button
             aria-label="avatar"
