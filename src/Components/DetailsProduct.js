@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IconCart, IconMinus, IconPlus } from "./Icons";
+import { CartContext } from "../App";
+import { imgProducts } from "../data";
 
 export default function DetailsProduct() {
   const [count, setCount] = useState(0);
+  const cartData = useContext(CartContext);
   return (
     <div className="px-5 flex flex-col gap-2 pb-10 lg:p-0">
       <span className="uppercase font-bold text-orange tracking-widest mt-8">
@@ -47,7 +50,18 @@ export default function DetailsProduct() {
             <IconPlus />
           </button>
         </div>
-        <button className="p-4 flex items-center justify-center gap-4 bg-orange w-full rounded-lg text-white font-bold shadow-3xl hover:opacity-[.5]">
+        <button
+          className="p-4 flex items-center justify-center gap-4 bg-orange w-full rounded-lg text-white font-bold shadow-3xl hover:opacity-[.5]"
+          onClick={() => {
+            let product = {
+              name: "fall limited edition sneakers",
+              picture: imgProducts[0],
+              price: "125",
+              quantity: count,
+            };
+            cartData.setCart(product);
+          }}
+        >
           <IconCart fill="fill-white" />
           Add to cart
         </button>
