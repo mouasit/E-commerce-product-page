@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
 import { IconCart, IconClose, IconMenu } from "./Icons";
-import logo from "../assets/images/logo.svg";
+import logo from "../assets/logo.svg";
 import avatar from "../assets/images/image-avatar.png";
 import { handelHover } from "../helpers";
 import {
