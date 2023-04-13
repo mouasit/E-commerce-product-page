@@ -9,7 +9,7 @@ import {
   DrawerOverlay,
   DrawerContent,
 } from "@chakra-ui/react";
-import { handelCart } from "../helpers";
+import { openCart, closeCart } from "../helpers";
 
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { CartContext } from "../App";
@@ -37,13 +37,7 @@ export default function Navigation() {
         click &&
         !box.current.contains(e.target)
       ) {
-        box.current.querySelector("svg").classList.remove("fill-veryDarkBlue");
-        box.current.querySelector("svg").classList.add("fill-[#69707D]");
-        contentBox.current.classList.toggle("animate-fadeIn");
-        contentBox.current.classList.toggle("animate-fadeOut");
-        setTimeout(() => {
-          setClick(false);
-        }, 100);
+        closeCart(click, box, contentBox, setClick);
       }
     });
   }, [click]);
@@ -82,7 +76,7 @@ export default function Navigation() {
             <button
               className="group relative"
               onClick={(e) => {
-                handelCart(e, click, contentBox, setClick);
+                openCart(e, click, contentBox, setClick);
               }}
             >
               {CartData.cart.quantity > 0 ? (
@@ -108,19 +102,7 @@ export default function Navigation() {
             className="rounded-full border-2 border-transparent hover:border-orange"
             ref={avatarRef}
             onFocus={() => {
-              if (click) {
-                box.current
-                  .querySelector("svg")
-                  .classList.remove("fill-veryDarkBlue");
-                box.current
-                  .querySelector("svg")
-                  .classList.add("fill-[#69707D]");
-                contentBox.current.classList.toggle("animate-fadeIn");
-                contentBox.current.classList.toggle("animate-fadeOut");
-                setTimeout(() => {
-                  setClick(false);
-                }, 100);
-              }
+              closeCart(click, box, contentBox, setClick);
             }}
           >
             <img src={avatar} alt="avatar" className="w-10 h-10" />

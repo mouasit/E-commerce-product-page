@@ -67,7 +67,7 @@ export function slideRight(index, lengthThubmnail, setState) {
   else setState(index + 1);
 }
 
-export function handelCart(element, click, contentBox, setClick) {
+export function openCart(element, click, contentBox, setClick) {
   if (click) {
     element.currentTarget
       .querySelector("svg")
@@ -86,5 +86,17 @@ export function handelCart(element, click, contentBox, setClick) {
       .querySelector("svg")
       .classList.add("fill-veryDarkBlue");
     setClick(true);
+  }
+}
+
+export function closeCart(click, box, contentBox, setClick) {
+  if (click) {
+    box.current.querySelector("svg").classList.remove("fill-veryDarkBlue");
+    box.current.querySelector("svg").classList.add("fill-[#69707D]");
+    contentBox.current.classList.toggle("animate-fadeIn");
+    contentBox.current.classList.toggle("animate-fadeOut");
+    setTimeout(() => {
+      setClick(false);
+    }, 100);
   }
 }

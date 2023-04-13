@@ -15,7 +15,9 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <div className="mx-auto lg:max-w-[1300px]">
-        <CartContext.Provider value={{ cart: cart, setCart: setCart }}>
+        <CartContext.Provider
+          value={{ cart: cart, setCart: setCart, maxProducts: 5 }}
+        >
           <Navigation />
           <main className="lg:flex lg:mx-20 lg:items-center lg:gap-32 lg:my-16 ">
             <BoxImg />

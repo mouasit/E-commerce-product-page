@@ -44,7 +44,7 @@ export default function DetailsProduct() {
           <button
             className="absolute right-0 mr-5 rounded-full hover:opacity-[.5]"
             onClick={() => {
-              if (count < 5) setCount(count + 1);
+              if (count < cartData.cart.maxProducts) setCount(count + 1);
             }}
           >
             <IconPlus />
@@ -58,7 +58,8 @@ export default function DetailsProduct() {
               if (tempQuantity === undefined) tempQuantity = 0;
 
               let res = count + tempQuantity;
-              if (res > 5) res = 5;
+              if (res > cartData.cart.maxProducts)
+                res = cartData.cart.maxProducts;
               let product = {
                 name: "fall limited edition sneakers",
                 picture: imgProducts[0],
