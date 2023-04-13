@@ -34,6 +34,7 @@ export default function DetailsProduct() {
         <div className="relative bg-lightGrayishBlue flex justify-center items-center font-bold p-4 rounded-lg  lg:w-[15rem]">
           {count}
           <button
+            aria-label="minus button"
             className="absolute left-0 ml-5 rounded-full hover:opacity-[.5]"
             onClick={() => {
               if (count > 0) setCount(count - 1);
@@ -42,6 +43,7 @@ export default function DetailsProduct() {
             <IconMinus />
           </button>
           <button
+            aria-label="plus button"
             className="absolute right-0 mr-5 rounded-full hover:opacity-[.5]"
             onClick={() => {
               if (count < cartData.maxProducts) setCount(count + 1);
@@ -58,8 +60,7 @@ export default function DetailsProduct() {
               if (tempQuantity === undefined) tempQuantity = 0;
 
               let res = count + tempQuantity;
-              if (res > cartData.maxProducts)
-                res = cartData.maxProducts;
+              if (res > cartData.maxProducts) res = cartData.maxProducts;
               let product = {
                 name: "fall limited edition sneakers",
                 picture: imgProducts[0],

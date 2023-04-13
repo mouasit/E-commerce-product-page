@@ -74,6 +74,7 @@ export default function Navigation() {
         <div className=" flex items-center gap-7 lg:gap-12">
           <div className="1xl:relative flex justify-center" ref={box}>
             <button
+              aria-label="cart button"
               className="group relative"
               onClick={(e) => {
                 openCart(e, click, contentBox, setClick);
