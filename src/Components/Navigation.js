@@ -20,6 +20,7 @@ export default function Navigation() {
   const [click, setClick] = useState(false);
   const box = useRef(null);
   const contentBox = useRef(null);
+  const avatarRef = useRef(null);
   const btnRef = React.useRef();
   const nav = useRef(null);
   const [isLargerThan1024] = useMediaQuery("(min-width: 1024px)");
@@ -97,7 +98,7 @@ export default function Navigation() {
                 ref={contentBox}
               >
                 <div className="rounded-[.5rem] lg:w-full w-[97%] bg-white shadow-4xl">
-                  <Cart />
+                  <Cart ref={avatarRef} />
                 </div>
               </div>
             ) : null}
@@ -105,6 +106,7 @@ export default function Navigation() {
           <button
             aria-label="avatar"
             className="rounded-full border-2 border-transparent hover:border-orange"
+            ref={avatarRef}
             onFocus={() => {
               if (click) {
                 box.current

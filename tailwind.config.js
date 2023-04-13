@@ -24,7 +24,7 @@ module.exports = {
         "4xl": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
       },
       screens: {
-        "1xl": "1437px",
+        "1xl": "1455px",
       },
       animation: {
         fadeIn: "fadeIn 0.2s",
