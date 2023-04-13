@@ -9,8 +9,13 @@ export default function Cart() {
       <div className="text-md text-veryDarkBlue font-bold border-b-[1px] border-grayishBlue p-5">
         Cart
       </div>
-      {CartData.cart.quantity > 0 ? (
-        <div className="h-full flex flex-col justify-between p-5">
+      <div className={`h-full flex justify-center items-center ${CartData.cart.quantity > 0 ? "absolute -z-[1]":""}`}>
+        <span className="text-darkGrayishBlue font-bold text-sm">
+          Your cart is empty.
+        </span>
+      </div>
+
+      <div className={`h-full flex flex-col justify-between p-5 ${CartData.cart.quantity > 0 ? "":"absolute -z-[1]"}`}>
           <div className="flex items-center justify-between">
             <img
               src={CartData.cart.picture}
@@ -57,13 +62,15 @@ export default function Cart() {
             Checkout
           </button>
         </div>
-      ) : (
-        <div className="h-full flex justify-center items-center">
-          <span className="text-darkGrayishBlue font-bold text-sm">
-            Your cart is empty.
-          </span>
-        </div>
-      )}
+
+
+
+
+
+
+
+
+
     </div>
   );
 }
