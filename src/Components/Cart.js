@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { CartContext } from "../App";
 import { IconDelete } from "./Icons";
+import { useMediaQuery } from "@chakra-ui/react";
 
 const Cart = React.forwardRef((props, ref) => {
   const CartData = useContext(CartContext);
   const content = useRef(null);
+  const [isLargerThan1024] = useMediaQuery("(min-width: 1024px)");
 
   useEffect(() => {
     if (!CartData.cart.quantity) {
@@ -36,39 +38,79 @@ const Cart = React.forwardRef((props, ref) => {
         }`}
       >
         <div className="flex items-center justify-between">
-          <img
-            src={CartData.cart.picture}
-            alt="product"
-            className="w-16 h-16 rounded-lg"
-          />
-          <div className="flex flex-col gap-1">
-            <span className="capitalize text-darkGrayishBlue ">
-              {CartData.cart.name}
-            </span>
-            {CartData.cart.quantity > 1 ? (
-              <div className="text-darkGrayishBlue">
-                <span className="flex items-center gap-1.5">
-                  <span className="flex items-center gap-[.1rem]">
+          {isLargerThan1024 ? (
+            <>
+              <img
+                src={CartData.cart.picture}
+                alt="product"
+                className="w-16 h-16 rounded-lg"
+              />
+              <div className="flex flex-col gap-1">
+                <span className="capitalize text-darkGrayishBlue ">
+                  {CartData.cart.name}
+                </span>
+                {CartData.cart.quantity > 1 ? (
+                  <div className="text-darkGrayishBlue">
+                    <span className="flex items-center gap-1.5">
+                      <span className="flex items-center gap-[.1rem]">
+                        <span>$</span>
+                        <span>{CartData.cart.price}.00</span>
+                      </span>
+                      <span>x</span>
+                      <span>{CartData.cart.quantity}</span>
+                      <span className="flex items-center text-veryDarkBlue font-bold gap-[.1rem]">
+                        <span>$</span>
+                        <span>
+                          {CartData.cart.price * CartData.cart.quantity}.00
+                        </span>
+                      </span>
+                    </span>
+                  </div>
+                ) : (
+                  <span className="flex items-center text-veryDarkBlue font-bold gap-[.1rem]">
                     <span>$</span>
                     <span>{CartData.cart.price}.00</span>
                   </span>
-                  <span>x</span>
-                  <span>{CartData.cart.quantity}</span>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center gap-5">
+              <img
+                src={CartData.cart.picture}
+                alt="product"
+                className="w-16 h-16 rounded-lg"
+              />
+              <div className="flex flex-col gap-1">
+                <span className="capitalize text-darkGrayishBlue ">
+                  {CartData.cart.name}
+                </span>
+                {CartData.cart.quantity > 1 ? (
+                  <div className="text-darkGrayishBlue">
+                    <span className="flex items-center gap-1.5">
+                      <span className="flex items-center gap-[.1rem]">
+                        <span>$</span>
+                        <span>{CartData.cart.price}.00</span>
+                      </span>
+                      <span>x</span>
+                      <span>{CartData.cart.quantity}</span>
+                      <span className="flex items-center text-veryDarkBlue font-bold gap-[.1rem]">
+                        <span>$</span>
+                        <span>
+                          {CartData.cart.price * CartData.cart.quantity}.00
+                        </span>
+                      </span>
+                    </span>
+                  </div>
+                ) : (
                   <span className="flex items-center text-veryDarkBlue font-bold gap-[.1rem]">
                     <span>$</span>
-                    <span>
-                      {CartData.cart.price * CartData.cart.quantity}.00
-                    </span>
+                    <span>{CartData.cart.price}.00</span>
                   </span>
-                </span>
+                )}
               </div>
-            ) : (
-              <span className="flex items-center text-veryDarkBlue font-bold gap-[.1rem]">
-                <span>$</span>
-                <span>{CartData.cart.price}.00</span>
-              </span>
-            )}
-          </div>
+            </div>
+          )}
           <button
             onClick={() => {
               CartData.setCart({});
