@@ -20,6 +20,7 @@ function App() {
         >
           <Navigation />
           <main className="lg:flex lg:mx-20 lg:items-center lg:gap-32 lg:my-16 ">
+            <h1 className="absolute z-[-10]">E-commerce product page</h1>
             <BoxImg />
             <DetailsProduct />
           </main>
