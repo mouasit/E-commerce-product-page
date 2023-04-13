@@ -17,7 +17,7 @@ export default function ListImg(props) {
     >
       <img src={props.thumbnail} alt="product" />
       <span
-        className={`absolute w-full h-full top-0 group-hover:bg-white group-focus:bg-white group-hover:opacity-[.5] group-focus:opacity-[.5] ${
+        className={`absolute w-full h-full top-0 left-0 group-hover:bg-white group-focus:bg-white group-hover:opacity-[.5] group-focus:opacity-[.5] ${
           props.state.state === props.state.count ? "bg-white opacity-[.5]" : ""
         }`}
       ></span>
